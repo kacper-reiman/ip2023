@@ -1,0 +1,310 @@
+/* ---------------------------------------------------------------------------- CSS RESET  */
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+    2. Remove default margin
+  */
+* {
+  margin: 0;
+  font-family: "Open Sans";
+}
+/*
+    3. Allow percentage-based heights in the application
+  */
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+/*
+    Typographic tweaks!
+    4. Add accessible line-height
+    5. Improve text rendering
+  */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+}
+/*
+    6. Improve media defaults
+  */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+    7. Remove built-in form typography styles
+  */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+    8. Avoid text overflows
+  */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+/*
+    9. Create a root stacking context
+  */
+#root,
+#__next {
+  isolation: isolate;
+}
+/*
+    10. Remove list styling
+    */
+ol,
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* ---------------------------------------------------------------------------- VARIABLES SETUP  */
+
+:root {
+  --clr__text__000: hsl(0, 0%, 98%);
+}
+[data-theme="dark"] {
+  --clr__text__000: hsl(215, 19%, 24%);
+}
+
+:root {
+  --clr__000: hsl(0, 0%, 100%);
+  --clr__100: hsl(210, 46%, 95%);
+  --clr__200: hsl(212, 23%, 69%);
+  --clr__300: hsl(214, 17%, 51%);
+  --clr__400: hsl(217, 19%, 35%);
+}
+[data-theme="dark"] {
+  --clr__000: hsl(226, 25%, 17%);
+  --clr__400: hsl(218, 7%, 77%);
+  --clr__300: hsl(209, 16%, 44%);
+  --clr__200: hsl(214, 20%, 42%);
+  --clr__100: hsl(215, 44%, 11%);
+}
+/* ---------------------------------------------------------------------------- PAGE LAYOUT  */
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: hsl(212, 100%, 97%);
+  /* background: linear-gradient(45deg, hsl(0, 0%, 100%), hsl(251, 100%, 97%)); */
+}
+/* ---------------------------------------------------------------------------- NAVBAR  */
+
+nav {
+  background: hsl(205, 82%, 41%);
+  background: linear-gradient(
+    90deg,
+    hsl(205, 82%, 41%) 35%,
+    hsl(212, 100%, 97%) 90%
+  );
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+nav ul {
+  display: flex;
+  /* gap: 1rem; */
+}
+
+button {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.5rem;
+  color: hsl(205, 82%, 41%);
+  background: hsl(212, 100%, 97%);
+  outline: 2px solid hsl(212, 100%, 97%);
+  font-weight: 700;
+  letter-spacing: 2px;
+  width: 8rem;
+  height: 2.5rem;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  z-index: 100;
+}
+button::before {
+  content: "";
+  width: 0;
+  height: 2.5rem;
+  border-radius: 1.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: hsl(205, 82%, 41%);
+  transition: 0.5s;
+  z-index: -1;
+}
+
+button:hover {
+  color: hsl(212, 100%, 97%);
+  transition: 0.5s;
+}
+button:hover::before {
+  width: 8rem;
+}
+button:active::before {
+  background-color: hsla(205, 82%, 41%, 0.9);
+  transition: 0.1s;
+}
+/* ---------------------------------------------------------------------------- CARDS STYLING  */
+.main__card,
+.signup__card,
+.login__card,
+.user__interface {
+  display: none;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 20px -20px 40px hsl(210, 26%, 82%),
+    -20px 20px 40px hsl(180, 100%, 97%);
+  animation: grow 1s normal cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.active {
+  display: flex;
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(0.1);
+  }
+
+  /* 50% {
+    transform: scale(1.1);
+  } */
+  100% {
+    transform: scale(1);
+  }
+}
+/* ---------------------------------------------------------------------------- MAIN CARD  */
+
+.main__card {
+  max-width: 60rem;
+}
+.content__wrapper {
+  min-width: 20rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 3rem;
+}
+
+.description {
+  color: hsl(216, 24%, 44%);
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+}
+.img__wrapper {
+  min-width: 35rem;
+  background-image: url(images/intive__img.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* ---------------------------------------------------------------------------- SIGNUP CARD & LOGIN CARD  */
+/* .signup__card {
+  display: none;
+} */
+.signup__card,
+.login__card {
+  max-width: 30rem;
+  padding: 2rem;
+  gap: 2rem;
+  flex-direction: column;
+  align-items: center;
+  color: hsl(205, 82%, 41%);
+}
+.signup__card > form,
+.login__card > form {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+.signup__card > form {
+  grid-template-columns: 2fr 3.5fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+.login__card > form {
+  grid-template-columns: 2fr 3.5fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+input {
+  background-color: hsl(212, 100%, 97%);
+  outline: 2px solid hsl(205, 82%, 41%);
+  border: none;
+  color: hsl(205, 82%, 41%);
+  font-weight: 700;
+  border-radius: 1.5rem;
+  height: 2rem;
+  width: 100%;
+  padding: 0 0.5rem;
+}
+#signup__btn,
+#login__btn {
+  background-color: hsl(205, 82%, 41%);
+  color: hsl(212, 100%, 97%);
+  grid-column: 1 / span 2;
+  width: 10rem;
+  height: 2.5rem;
+  justify-self: center;
+  cursor: pointer;
+  transition: 0.5s;
+  outline: 2px solid hsl(205, 82%, 41%);
+  font-size: 1.1rem;
+}
+#signup__btn:hover,
+#login__btn:hover {
+  background-color: hsl(212, 100%, 97%);
+  color: hsl(205, 82%, 41%);
+}
+
+/* ---------------------------------------------------------------------------- FORM VALIDATION  */
+input:user-invalid {
+  outline: 2px solid red;
+}
+input:user-valid {
+  outline: 2px solid green;
+}
+input ~ .error__msg {
+  display: none;
+}
+input:user-invalid ~ .error__msg {
+  display: block;
+  font-size: 10px;
+  color: red;
+  margin: 0 5px;
+}
