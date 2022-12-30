@@ -49,30 +49,36 @@ const password = document.getElementById("password");
 const signUpForm = document.getElementById("signup");
 
 function signUp(event) {
-  // checks if username is taken, działa przy wpisywaniu pojedynczo, teraz chyba trzeba sie jakoś dostać do obiektu newUser
-  if (localStorage.getItem("username", username.value) == username.value) {
+  const newUser = {                                                             //tworzy obiekt który zbiera wartości z inputów
+    username: username.value,
+    email: email.value,
+    password: password.value,
+  };
+  function addNewUser() {
+    let stringifiedData = JSON.stringify(newUser);                              // obiekt zamienia na string
+    localStorage.setItem(username.value, stringifiedData);                      // wrzuca string do localStorage, key = nazwa użytkownika
+  }
+  const getUserData = localStorage.getItem(username.value);                     // pobiera z localStorage wartość przypisana dla nazwy uzytkownika
+  if (JSON.parse(getUserData) == null) {                                        //jeśli localStorage jest puste => addNewUser();
+    addNewUser();
+  } else if (Object.values(newUser)[0] == JSON.parse(getUserData).username) {   // jeśli wartość username z inputu jest już w localStorage => alert
     alert("Podana nazwa użytkownika już istnieje");
-  }
-  // checks if email is already registered, to co wyżej
-  else if (localStorage.getItem("email", email.value) == email.value) {
+  } else if (Object.values(newUser)[1] == JSON.parse(getUserData).email) {      // jeśli email z inputu jest już w localStorage => alert - NIE DZIAŁA
     alert("Podany Email jest już zarejestrowany");
+  } else {                                                                      // jeśli wszystko ok => addNewUser();
+    addNewUser();
   }
-  // creates new user as an object, dane nadpisuja sie przy każdym submicie, chyba trzeba je jakoś wypushować zamiast setItem
-  else {
-    const newUser = {
-      username: username.value,
-      email: email.value,
-      password: password.value,
-    };
-    let json = JSON.stringify(newUser);
-    localStorage.setItem(username, json);
-
-    signUpForm.reset();
-    event.preventDefault();
-  }
+   //funkcja 
+  event.preventDefault();
+  console.log(Object.values(newUser)[0]);                                       //wyrzuca 1 wartość z obiektu newUser - username
+  console.log(JSON.parse(getUserData).username);                                //wyrzuca username z local storage, jeśli jest pusty - błąd JSON.parse is null
+  console.log(Object.values(newUser)[1]);                                       //wyrzuca 2 wartość z obiektu newUser - email
+  console.log(JSON.parse(getUserData).email);                                   //wyrzuca email z local storage 
 }
-signUpForm.addEventListener("submit", signUp);
+signUpForm.addEventListener("submit", signUp);                                  // event listener formularza
 
+// signUpForm.reset(); 
+//   console.log(Object.values(getName)[0]);
 // localStorage.setItem("username", username.value);
 // localStorage.setItem("email", email.value);
 // localStorage.setItem("password", password.value);
