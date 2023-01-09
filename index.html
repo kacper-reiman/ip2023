@@ -17,7 +17,7 @@
     <header>
       <nav>
         <ul class="main__card__nav">
-          <li><button id="login__nav" class="active">Logowanie</button></li>
+          <li><button id="login__nav" class="active" >Logowanie</button></li>
           <li><button id="signup__nav" class="active">Rejestracja</button></li>
           <li><button id="logout__nav">Wyloguj się</button></li>
         </ul> 
@@ -38,7 +38,7 @@
       </nav>
     </header>
     <main>
-      <section class="main__card ">
+      <section class="main__card active">
         <!-- po lewej blok tekstu, po prawej  img  -->
         <div class="content__wrapper">
          
@@ -51,10 +51,10 @@
         </div>
         <div class="img__wrapper"></div>
       </section>
-      <section class="signup__card active">
+      <section class="signup__card">
         <!-- form z nazwą, hasłem, emailem, powtórzeniem emaila i buttonem zarejestruj -->
         <h2>Formularz rejestracyjny</h2>
-        <form id="signup">
+        <form id="signup" method="post">
           <label for="username">Nazwa użytkownika:</label>
 
           <div class="form__field">
@@ -104,24 +104,34 @@
       <section class="login__card">
         <!-- form z loginem, hasłem i buttonem zaloguj -->
         <h2>Logowanie</h2>
-        <form id="signin" >
-          <label for="username">Nazwa użytkownika:</label>
+        <form id="login" method="post" >
+          <label for="username">Nazwa lub E-mail:</label>
           <input
             type="text"
             name="username"
-            id="username"
+            id="login__username"
             required
             minlength="6"
-            maxlength="16"
+            maxlength="20"
           />
           <label for="password">Hasło:</label>
-          <input type="password" name="password" id="password" required minlength="6" />
+          <input type="password" name="password" id="login__password" required minlength="6" />
           <input type="submit" id="login__btn" value="Zaloguj się" />
       </section>
       <section class="user__interface">
-        <!-- ZROBI SIĘ PÓŹNIEJ -->
+        <canvas id="pie__chart"></canvas>
+        <div class="transactions__container">
+          <ul class="transactions__list">
+            <li class="date">Data</li>
+            <li class="amount">Kwota operacji</li>
+            <li class="desc">Opis</li>
+            <li class="balance">Saldo</li>
+          </ul>
+        </div>
       </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="main.js"></script>
+
   </body>
 </html>

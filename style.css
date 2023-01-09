@@ -83,26 +83,11 @@ ul {
 /* ---------------------------------------------------------------------------- VARIABLES SETUP  */
 
 :root {
-  --clr__text__000: hsl(0, 0%, 98%);
-}
-[data-theme="dark"] {
-  --clr__text__000: hsl(215, 19%, 24%);
+  --clr__white: hsl(212, 100%, 97%);
+  --clr__lightblue:  hsl(205, 82%, 41%);
 }
 
-:root {
-  --clr__000: hsl(0, 0%, 100%);
-  --clr__100: hsl(210, 46%, 95%);
-  --clr__200: hsl(212, 23%, 69%);
-  --clr__300: hsl(214, 17%, 51%);
-  --clr__400: hsl(217, 19%, 35%);
-}
-[data-theme="dark"] {
-  --clr__000: hsl(226, 25%, 17%);
-  --clr__400: hsl(218, 7%, 77%);
-  --clr__300: hsl(209, 16%, 44%);
-  --clr__200: hsl(214, 20%, 42%);
-  --clr__100: hsl(215, 44%, 11%);
-}
+
 /* ---------------------------------------------------------------------------- PAGE LAYOUT  */
 
 main {
@@ -111,17 +96,17 @@ main {
   justify-content: center;
   align-items: center;
   height: 100%;
-  background-color: hsl(212, 100%, 97%);
+  background-color: var(--clr__white);
   /* background: linear-gradient(45deg, hsl(0, 0%, 100%), hsl(251, 100%, 97%)); */
 }
 /* ---------------------------------------------------------------------------- NAVBAR  */
 
 nav {
-  background: hsl(205, 82%, 41%);
+ 
   background: linear-gradient(
     90deg,
-    hsl(205, 82%, 41%) 35%,
-    hsl(212, 100%, 97%) 90%
+   var(--clr__lightblue) 35%,
+    var(--clr__white) 90%
   );
   height: 60px;
   width: 100%;
@@ -141,9 +126,9 @@ button {
   justify-content: center;
   align-items: center;
   margin: 0 0.5rem;
-  color: hsl(205, 82%, 41%);
-  background: hsl(212, 100%, 97%);
-  outline: 2px solid hsl(212, 100%, 97%);
+  color:var(--clr__lightblue);
+  background: var(--clr__white);
+  outline: 2px solid var(--clr__white);
   font-weight: 700;
   letter-spacing: 2px;
   width: 8rem;
@@ -162,13 +147,13 @@ button::before {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: hsl(205, 82%, 41%);
+  background-color:var(--clr__lightblue);
   transition: 0.5s;
   z-index: -1;
 }
 
 button:hover {
-  color: hsl(212, 100%, 97%);
+  color: var(--clr__white);
   transition: 0.5s;
 }
 button:hover::before {
@@ -177,6 +162,9 @@ button:hover::before {
 button:active::before {
   background-color: hsla(205, 82%, 41%, 0.9);
   transition: 0.1s;
+}
+svg {
+  min-width: 80px;
 }
 /* ---------------------------------------------------------------------------- CARDS STYLING  */
 .main__card,
@@ -189,7 +177,7 @@ button:active::before {
   background-color: hsl(0, 0%, 100%);
   box-shadow: 20px -20px 40px hsl(210, 26%, 82%),
     -20px 20px 40px hsl(180, 100%, 97%);
-  animation: grow 1s normal cubic-bezier(0.22, 0.61, 0.36, 1);
+  animation: grow 1s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 .active {
   display: flex;
@@ -198,19 +186,21 @@ button:active::before {
 @keyframes grow {
   0% {
     transform: scale(0.1);
+    opacity: 0;
+
   }
 
-  /* 50% {
-    transform: scale(1.1);
-  } */
+
   100% {
     transform: scale(1);
+    opacity: 1;
   }
 }
+
 /* ---------------------------------------------------------------------------- MAIN CARD  */
 
 .main__card {
-  max-width: 60rem;
+  max-width: 55rem;
 }
 .content__wrapper {
   min-width: 20rem;
@@ -245,7 +235,7 @@ button:active::before {
   gap: 2rem;
   flex-direction: column;
   align-items: center;
-  color: hsl(205, 82%, 41%);
+  color:var(--clr__lightblue);
 }
 .signup__card > form,
 .login__card > form {
@@ -263,33 +253,36 @@ button:active::before {
 }
 
 input {
-  background-color: hsl(212, 100%, 97%);
-  outline: 2px solid hsl(205, 82%, 41%);
+  background-color: var(--clr__white);
+  outline: 1px solid var(--clr__lightblue);
   border: none;
-  color: hsl(205, 82%, 41%);
+  color:var(--clr__lightblue);
   font-weight: 700;
   border-radius: 1.5rem;
   height: 2rem;
   width: 100%;
   padding: 0 0.5rem;
 }
+input:focus {
+  outline: 2px solid var(--clr__lightblue);
+}
 #signup__btn,
 #login__btn {
-  background-color: hsl(205, 82%, 41%);
-  color: hsl(212, 100%, 97%);
+  background-color:var(--clr__lightblue);
+  color: var(--clr__white);
   grid-column: 1 / span 2;
   width: 10rem;
   height: 2.5rem;
   justify-self: center;
   cursor: pointer;
   transition: 0.5s;
-  outline: 2px solid hsl(205, 82%, 41%);
+  outline: 2px solid var(--clr__lightblue);
   font-size: 1.1rem;
 }
 #signup__btn:hover,
 #login__btn:hover {
-  background-color: hsl(212, 100%, 97%);
-  color: hsl(205, 82%, 41%);
+  background-color: var(--clr__white);
+  color:var(--clr__lightblue);
 }
 
 /* ---------------------------------------------------------------------------- FORM VALIDATION  */
@@ -307,4 +300,97 @@ input:user-invalid ~ .error__msg {
   font-size: 10px;
   color: red;
   margin: 0 5px;
+}
+
+
+/* ---------------------------------------------------------------------------- USER INTERFACE */
+.user__interface{
+  flex-direction: column;
+  width:80%;
+  max-height: 35rem;
+  
+}
+canvas {
+  max-height:20rem;
+}
+.transactions__container {
+  display: flex;
+  flex-direction: column;
+  max-height: 10rem;
+  overflow-y: scroll;
+}
+
+.transactions__list,
+.transaction__details {
+  display: flex;
+  border-radius: 1rem;
+}
+.transactions__list {
+  display: flex;
+  padding: 1rem;
+  background-color: hsla(205, 82%, 41%, 0.9);
+  color: hsl(0, 0%, 100%);
+  font-weight: 600;
+}
+.transaction__details {
+  padding: .5rem;
+  margin: .8rem .5rem;
+  background-color: var(--clr__white);
+  color: var(--clr__lightblue);
+  animation: grow 1s;
+}
+.transaction__details > li,
+.transactions__list > li {
+  width: 100%;
+  text-align: left;
+  padding-right: 1rem;
+}
+
+/* ---------------------------------------------------------------------------- MEDIA QUERY  */
+@media screen and (max-width: 768px) {
+
+  .main__card,
+.signup__card,
+.login__card,
+.user__interface {
+  max-width: 320px;
+  max-height: 550px;
+  overflow-y: scroll;
+}
+
+nav {
+  background:var(--clr__lightblue);
+  justify-content: center;
+  
+}
+button {
+  transform: scale(0.9);
+}
+svg {
+  display: none;
+}
+
+.signup__card > form,
+.login__card > form {
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+align-items: stretch
+}
+#signup__btn,
+#login__btn {
+  align-self: center;
+  margin: 1rem 0;
+}
+.user__interface {
+  font-size: .8rem;
+}
+.date,
+.balance {
+  display: none;
+}
+.transaction__details > li {
+  padding: 0;
+}
+
 }
