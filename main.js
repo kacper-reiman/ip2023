@@ -75,7 +75,7 @@ function signUp(event) {
 // stringify object newUser, put it into localStorage with username as key, display message, reset form and proceed to login page
   function addNewUser() {
     let stringifiedData = JSON.stringify(newUser);                             
-    localStorage.setItem(username.value, stringifiedData); 
+    localStorage.setItem(usernameInput.value, stringifiedData); 
     alert("Konto zostało utworzone");
     signUpForm.reset();
     showLogInSection();            
