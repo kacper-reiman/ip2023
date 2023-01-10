@@ -20,6 +20,7 @@
           <li><button id="login__nav" class="active" >Logowanie</button></li>
           <li><button id="signup__nav" class="active">Rejestracja</button></li>
           <li><button id="logout__nav">Wyloguj się</button></li>
+          <li><span id="username__container"></span></li>
         </ul> 
         <!-- button PL/EN -->
 
@@ -119,7 +120,10 @@
           <input type="submit" id="login__btn" value="Zaloguj się" />
       </section>
       <section class="user__interface">
+        <div class="charts__container">
         <canvas id="pie__chart"></canvas>
+        <canvas id="bar__chart"></canvas>
+      </div>
         <div class="transactions__container">
           <ul class="transactions__list">
             <li class="date">Data</li>
