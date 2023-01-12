@@ -16,7 +16,7 @@
   <body>
     <header>
       <nav>
-        <ul class="main__card__nav">
+        <ul class="nav">
           <li><button id="login__nav" class="active" >Logowanie</button></li>
           <li><button id="signup__nav" class="active">Rejestracja</button></li>
           <li><button id="logout__nav">Wyloguj się</button></li>
@@ -124,16 +124,17 @@
         <canvas id="pie__chart"></canvas>
         <canvas id="bar__chart"></canvas>
       </div>
+      <ul class="transactions__list">
+        <li class="date">Data</li>
+        <li class="type">Typ</li>
+        <li class="desc">Opis</li>
+        <li class="amount">Kwota operacji</li>
+        <li class="balance">Saldo</li>
+      </ul>
         <div class="transactions__container">
-          <ul class="transactions__list">
-            <li class="date">Data</li>
-            <li class="type">Typ</li>
-            <li class="desc">Opis</li>
-            <li class="amount">Kwota operacji</li>
-            <li class="balance">Saldo</li>
-          </ul>
         </div>
       </section>
+    
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="main.js"></script>

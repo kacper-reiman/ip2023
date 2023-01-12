@@ -81,15 +81,11 @@ ul {
 }
 
 /* ---------------------------------------------------------------------------- VARIABLES SETUP  */
-
 :root {
   --clr__white: hsl(212, 100%, 97%);
-  --clr__lightblue:  hsl(205, 82%, 41%);
+  --clr__lightblue: hsl(205, 82%, 41%);
 }
-
-
 /* ---------------------------------------------------------------------------- PAGE LAYOUT  */
-
 main {
   display: flex;
   flex-direction: column;
@@ -97,15 +93,12 @@ main {
   align-items: center;
   height: 100%;
   background-color: var(--clr__white);
-  /* background: linear-gradient(45deg, hsl(0, 0%, 100%), hsl(251, 100%, 97%)); */
 }
 /* ---------------------------------------------------------------------------- NAVBAR  */
-
 nav {
- 
   background: linear-gradient(
     90deg,
-   var(--clr__lightblue) 35%,
+    var(--clr__lightblue) 35%,
     var(--clr__white) 90%
   );
   height: 60px;
@@ -115,18 +108,15 @@ nav {
   justify-content: space-between;
   padding: 0 2rem;
 }
-
 nav ul {
   display: flex;
-  /* gap: 1rem; */
 }
-
 button {
   display: none;
   justify-content: center;
   align-items: center;
   margin: 0 0.5rem;
-  color:var(--clr__lightblue);
+  color: var(--clr__lightblue);
   background: var(--clr__white);
   outline: 2px solid var(--clr__white);
   font-weight: 700;
@@ -147,11 +137,10 @@ button::before {
   position: absolute;
   top: 0;
   left: 0;
-  background-color:var(--clr__lightblue);
+  background-color: var(--clr__lightblue);
   transition: 0.5s;
   z-index: -1;
 }
-
 button:hover {
   color: var(--clr__white);
   transition: 0.5s;
@@ -162,9 +151,6 @@ button:hover::before {
 button:active::before {
   background-color: hsla(205, 82%, 41%, 0.9);
   transition: 0.1s;
-}
-svg {
-  min-width: 80px;
 }
 /* ---------------------------------------------------------------------------- CARDS STYLING  */
 .main__card,
@@ -182,23 +168,15 @@ svg {
 .active {
   display: flex;
 }
-
 @keyframes grow {
   0% {
     transform: scale(0.1);
-    opacity: 0;
-
   }
-
-
   100% {
     transform: scale(1);
-    opacity: 1;
   }
 }
-
 /* ---------------------------------------------------------------------------- MAIN CARD  */
-
 .main__card {
   max-width: 55rem;
 }
@@ -210,7 +188,6 @@ svg {
   justify-content: space-around;
   gap: 3rem;
 }
-
 .description {
   color: hsl(216, 24%, 44%);
   font-size: 0.8rem;
@@ -223,9 +200,7 @@ svg {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 /* ---------------------------------------------------------------------------- SIGNUP CARD & LOGIN CARD  */
-
 .signup__card,
 .login__card {
   max-width: 30rem;
@@ -233,7 +208,7 @@ svg {
   gap: 2rem;
   flex-direction: column;
   align-items: center;
-  color:var(--clr__lightblue);
+  color: var(--clr__lightblue);
 }
 .signup__card > form,
 .login__card > form {
@@ -249,12 +224,11 @@ svg {
   grid-template-columns: 2fr 3.5fr;
   grid-template-rows: 1fr 1fr;
 }
-
 input {
   background-color: var(--clr__white);
   outline: 1px solid var(--clr__lightblue);
   border: none;
-  color:var(--clr__lightblue);
+  color: var(--clr__lightblue);
   font-weight: 700;
   border-radius: 1.5rem;
   height: 2rem;
@@ -266,7 +240,7 @@ input:focus {
 }
 #signup__btn,
 #login__btn {
-  background-color:var(--clr__lightblue);
+  background-color: var(--clr__lightblue);
   color: var(--clr__white);
   grid-column: 1 / span 2;
   width: 10rem;
@@ -280,9 +254,8 @@ input:focus {
 #signup__btn:hover,
 #login__btn:hover {
   background-color: var(--clr__white);
-  color:var(--clr__lightblue);
+  color: var(--clr__lightblue);
 }
-
 /* ---------------------------------------------------------------------------- FORM VALIDATION  */
 input:user-invalid {
   outline: 2px solid hsl(0, 100%, 50%);
@@ -299,18 +272,15 @@ input:user-invalid ~ .error__msg {
   color: red;
   margin: 0 5px;
 }
-
-
 /* ---------------------------------------------------------------------------- USER INTERFACE */
-.user__interface{
+.user__interface {
   flex-direction: column;
-  width:80%;
+  width: 80%;
   max-height: 80%;
   padding: 1rem;
-  gap:1rem;
-  
+  gap: 1rem;
 }
-.charts__container{
+.charts__container {
   display: flex;
   max-width: 100%;
   max-height: 100%;
@@ -326,7 +296,6 @@ canvas {
   max-height: 80%;
   overflow-y: scroll;
 }
-
 .transactions__list,
 .transaction__details {
   display: flex;
@@ -342,7 +311,7 @@ canvas {
 }
 .transaction__details {
   padding: 1rem;
-  margin: .8rem .5rem;
+  margin: 0.8rem 0.5rem;
   background-color: var(--clr__white);
   color: var(--clr__lightblue);
   animation: grow 1s;
@@ -351,60 +320,54 @@ canvas {
 .transactions__list > li {
   width: 100%;
   text-align: left;
-  padding-right: 1rem;
 }
-
 /* ---------------------------------------------------------------------------- MEDIA QUERY  */
 @media screen and (max-width: 768px) {
-
   .main__card,
-.signup__card,
-.login__card,
-.user__interface {
-  min-width: 320px;
-  max-height: 550px;
-  overflow-y: scroll;
-}
+  .signup__card,
+  .login__card,
+  .user__interface {
+    min-width: 320px;
+    max-height: 550px;
+    overflow-y: scroll;
+  }
 
-nav {
-  background:var(--clr__lightblue);
-  justify-content: center;
-  
-}
-button {
-  transform: scale(0.9);
-}
+  nav {
+    background: var(--clr__lightblue);
+    justify-content: center;
+  }
+  button {
+    transform: scale(0.9);
+  }
 
-
-.signup__card > form,
-.login__card > form {
-display: flex;
-flex-direction: column;
-gap: 0.5rem;
-align-items: stretch
-}
-#signup__btn,
-#login__btn {
-  align-self: center;
-  margin: 1rem 0;
-}
-.user__interface {
-  font-size: .8rem;
-}
-.charts__container {
-  overflow-x: scroll;
-  min-height: 20rem;
-}
-canvas {
-  min-width: 100%;
-  min-height: 100%;
-}
-.date,
-.balance {
-  display: none;
-}
-.transaction__details > li {
-  padding: 0;
-}
-
+  .signup__card > form,
+  .login__card > form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+  #signup__btn,
+  #login__btn {
+    align-self: center;
+    margin: 1rem 0;
+  }
+  .user__interface {
+    font-size: 0.8rem;
+  }
+  .charts__container {
+    overflow-x: scroll;
+    min-height: 20rem;
+  }
+  canvas {
+    min-width: 100%;
+    min-height: 100%;
+  }
+  .date,
+  .balance {
+    display: none;
+  }
+  .transaction__details > li {
+    padding: 0;
+  }
 }
