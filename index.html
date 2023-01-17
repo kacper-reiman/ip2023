@@ -23,20 +23,26 @@
           <li><span class="currently__logged">&#x1f464;</span></li>
         </ul> 
         <!-- button PL/EN -->
-
-        <svg
+       
+        
+        <div class="flag__container">
+          <svg
           id="intive__logo"
           alt="Intive - Never Settle"
           width="80"
           height="25"
           viewBox="0 0 80 25"
-        >
+          >
           <path
-            fill="#1377be"
-            d="M68.392 6.828c5.073 0 8.454 3.104 8.454 8.384v1.103H64.464c.276 2.116 2.27 3.242 3.976 3.242 1.713 0 2.8-.477 3.954-1.624l3.899 1.631c-2.124 3.084-4.541 4.016-7.722 4.016-4.633 0-8.57-3.465-8.57-8.368 0-4.248 3.375-8.384 8.39-8.384zm-19.509.266l3.348 10.469h.053l3.312-10.47h4.487l-5.592 16.273h-4.477L44.398 7.094h4.485zm-6.288.001v16.27h-4.483V7.095h4.483zm-10.74-4v4h2.82v3.811h-2.812v5.783c0 1.627.349 2.33 2.253 2.33h.557v4.34h-1.35c-4.696 0-5.933-1.935-5.933-5.803v-6.662h-2.812V7.087h2.806V3.096h4.472zM16.344 6.69c3.76 0 6.116 2.231 6.116 6.059v10.601h-4.462v-9.544c0-2.22-1.494-2.937-2.553-2.937-1.511 0-3.008.816-3.008 3.463v9.018H7.927V7.087h4.46v1.626c.742-.964 2.144-2.024 3.956-2.024zM4.49 7.082v12.091c0 2.261-1.595 4.172-4.49 4.172v-2.373c1.188-.166 2.027-.678 2.027-1.753v-1.3H.012V7.082H4.49zm63.95 3.276c-2.094 0-3.662 1.412-3.922 2.688h7.835c-.307-1.37-1.692-2.688-3.913-2.688zM42.6.588v4.34h-4.484V.588H42.6zM4.522.583v4.339H.038V.582h4.484z"
+          fill="#1377be"
+          d="M68.392 6.828c5.073 0 8.454 3.104 8.454 8.384v1.103H64.464c.276 2.116 2.27 3.242 3.976 3.242 1.713 0 2.8-.477 3.954-1.624l3.899 1.631c-2.124 3.084-4.541 4.016-7.722 4.016-4.633 0-8.57-3.465-8.57-8.368 0-4.248 3.375-8.384 8.39-8.384zm-19.509.266l3.348 10.469h.053l3.312-10.47h4.487l-5.592 16.273h-4.477L44.398 7.094h4.485zm-6.288.001v16.27h-4.483V7.095h4.483zm-10.74-4v4h2.82v3.811h-2.812v5.783c0 1.627.349 2.33 2.253 2.33h.557v4.34h-1.35c-4.696 0-5.933-1.935-5.933-5.803v-6.662h-2.812V7.087h2.806V3.096h4.472zM16.344 6.69c3.76 0 6.116 2.231 6.116 6.059v10.601h-4.462v-9.544c0-2.22-1.494-2.937-2.553-2.937-1.511 0-3.008.816-3.008 3.463v9.018H7.927V7.087h4.46v1.626c.742-.964 2.144-2.024 3.956-2.024zM4.49 7.082v12.091c0 2.261-1.595 4.172-4.49 4.172v-2.373c1.188-.166 2.027-.678 2.027-1.753v-1.3H.012V7.082H4.49zm63.95 3.276c-2.094 0-3.662 1.412-3.922 2.688h7.835c-.307-1.37-1.692-2.688-3.913-2.688zM42.6.588v4.34h-4.484V.588H42.6zM4.522.583v4.339H.038V.582h4.484z"
           ></path>
         </svg>
+        <img id="polish" src="images/icons8-poland-48.png" alt="PL"></img>
+        <img id="english" src="images/icons8-united-kingdom-48.png" alt="EN"></img>
+        </div>
       </nav>
+      
     </header>
     <main>
       <section class="main__card">
@@ -54,23 +60,23 @@
       </section>
       <section class="signup__card">
         <!-- form z nazwą, hasłem, emailem, powtórzeniem emaila i buttonem zarejestruj -->
-        <h2>Formularz rejestracyjny</h2>
+        <h2 id="signup__form__title">Formularz rejestracyjny</h2>
         <form id="signup" method="post">
-          <label for="username">Nazwa użytkownika:</label>
+          <label id="username__label" for="username">Nazwa użytkownika:</label>
 
           <div class="form__field">
-            <input type="text" name="username" id="username"  minlength="6" maxlength="16" pattern="(?=.*[A-Za-z]{5,})(?=.*\d)[A-Za-z\d]{6,20}" placeholder="Wpisz nazwę użytkownika" required/><br>
-            <span class="error__msg">
+            <input type="text" name="username" id="username"  minlength="6" maxlength="16" pattern="(?=.*[A-Za-z]{5,})(?=.*\d)[A-Za-z\d]{6,16}" placeholder="Wpisz nazwę użytkownika" required/><br>
+            <span id = "username__error" class="error__msg">
               Pole musi zawierać 6-16 znaków, co najmniej 5 liter i 1 cyfrę
             </span>
         </div>
           
 
-          <label for="password">Hasło:</label>
+          <label id="password__label" for="password">Hasło:</label>
 
           <div class="form__field">
             <input type="password" name="password" id="password"  minlength="6" placeholder="Wpisz hasło" required/><br>
-            <span class="error__msg">
+            <span id="password__error" class="error__msg">
               Pole musi zawierać co najmniej 6 znaków 
             </span>
         </div>
@@ -79,20 +85,20 @@
           <label for="email">E-mail:</label>
 
           <div class="form__field">
-            <!-- <input type="email" name="email" id="email" required /><br> -->
+          
             <input id="email" name="email" type="email" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'example@com.pl' : ''); if(this.checkValidity()) form.email__confirm.pattern = this.value;" placeholder="Wpisz E-mail" required>
-            <span class="error__msg">
+            <span id="email__error" class="error__msg">
             Pole musi mieć poprawny format E-mail
             </span>
           </div>
           
 
-          <label for="email__confirm">Potwierdź E-mail:</label>
+          <label id="confirm__label" for="email__confirm">Potwierdź E-mail:</label>
 
           <div class="form__field">
             <!-- <input type="email"  name="email__confirm" id="email__confirm" required/><br> -->
             <input id="email__confirm" name="email__confirm" type="email" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Wartości nie zgadzają się' : '');" placeholder="Potwierdź E-mail" required>
-            <span class="error__msg">
+            <span id = "confirm__error" class="error__msg">
             Pole musi mieć taką samą wartość jak "E-mail" 
             </span>
         </div>
@@ -104,19 +110,19 @@
       </section>
       <section class="login__card">
         <!-- form z loginem, hasłem i buttonem zaloguj -->
-        <h2>Logowanie</h2>
+        <h2 id="login__form__title">Logowanie</h2>
         <form id="login" method="post" >
-          <label for="username">Nazwa lub E-mail:</label>
+          <label id="login__username__label" for="username">Nazwa lub E-mail:</label>
           <input
             type="text"
             name="username"
             id="login__username"
-            pattern="(?=.*[A-Za-z]{5,})(?=.*\d)[A-Za-z\d]{6,20}"
+            pattern="(?=.*[A-Za-z]{5,})(?=.*\d)[A-Za-z\d]{6,16}"
             required
             minlength="6"
             maxlength="20"
           />
-          <label for="password">Hasło:</label>
+          <label id="login__password__label" for="password">Hasło:</label>
           <input type="password" name="password" id="login__password" required minlength="6" />
           <input type="submit" id="login__btn" value="Zaloguj się" />
       </section>
@@ -126,19 +132,19 @@
         <canvas id="bar__chart"></canvas>
       </div>
       <ul class="transactions__list">
-        <li class="date">Data</li>
-        <li class="type">Typ</li>
-        <li class="desc">Opis</li>
-        <li class="amount">Kwota operacji</li>
-        <li class="balance">Saldo</li>
+        <li class="date" id="date">Data</li>
+        <li class="type" id="type">Typ</li>
+        <li class="desc" id="desc">Opis</li>
+        <li class="amount" id="amount">Kwota operacji</li>
+        <li class="balance" id="balance">Saldo</li>
       </ul>
         <div class="transactions__container">
         </div>
       </section>
-    
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="language.js"></script>
     <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   </body>
 </html>

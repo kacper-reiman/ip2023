@@ -159,6 +159,20 @@ button:active::before {
   color: hsla(212, 100%, 97%, 0.6);
   text-decoration: underline;
 }
+.flag__container {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+#polish,
+#english {
+  width: 32px;
+}
+#polish:hover,
+#english:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
 /* ---------------------------------------------------------------------------- CARDS STYLING  */
 .main__card,
 .signup__card,
@@ -330,16 +344,15 @@ canvas {
 }
 /* ---------------------------------------------------------------------------- MEDIA QUERY  */
 @media screen and (max-width: 768px) {
-  .signup__card,
-  .login__card,
-  .user__interface {
-    /* min-width: 320px; */
-    overflow-y: scroll;
+  body {
+    min-width: 320px;
   }
-
   nav {
     background: var(--clr__lightblue);
-    justify-content: center;
+    padding: 0 0.5rem;
+  }
+  #intive__logo {
+    display: none;
   }
   button {
     transform: scale(0.9);

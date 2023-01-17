@@ -140,6 +140,7 @@ function logIn(event) {
     sessionStorage.setItem("currentlyLogged", username.value);
     alert("Zostałeś zalogowany.");
     logInForm.reset();
+    location.reload();
     showSection(userInterface);
     loggedUser.innerHTML = "&#x1f464; " + currentlyLoggedUser;
   }
