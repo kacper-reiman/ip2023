@@ -6,52 +6,69 @@ const userInterface = document.querySelector(".user__interface");
 const signUpBtn = document.getElementById("signup__nav");
 const logInBtn = document.getElementById("login__nav");
 const logOutBtn = document.getElementById("logout__nav");
-
-function logInSectionBtns() {
-  signUpBtn.classList.add("active");
-  logInBtn.classList.remove("active");
-  logOutBtn.classList.remove("active");
-}
-function signUpSectionBtns() {
-  signUpBtn.classList.remove("active");
-  logInBtn.classList.add("active");
-  logOutBtn.classList.remove("active");
-}
-function mainSectionBtns() {
-  signUpBtn.classList.add("active");
-  logInBtn.classList.add("active");
-  logOutBtn.classList.remove("active");
-}
-function userInterfaceBtns() {
-  signUpBtn.classList.remove("active");
-  logInBtn.classList.remove("active");
-  logOutBtn.classList.add("active");
-}
-
-// gather all sections in an array
+const loggedUser = document.querySelector(".currently__logged");
+// put sections and buttons into arrays
 const sectionsArray = [logInSection, signUpSection, mainSection, userInterface];
-// set section as function parameter
+const buttonsArray = [signUpBtn, logInBtn, logOutBtn, loggedUser];
+//shows button defined as an argument
+function showButtons(buttonsArray) {
+  buttonsArray.forEach((button) => {
+    if (!button.classList.contains("active")) {
+      button.classList.add("active");
+    }
+  });
+}
+// hides button defined as an argument
+function hideButtons(buttonsArray) {
+  buttonsArray.forEach((button) => {
+    if (button.classList.contains("active")) {
+      button.classList.remove("active");
+    }
+  });
+}
+// set section as function argument
 function showSection(section) {
   //remove active class from all elements in array
   sectionsArray.forEach((section) => section.classList.remove("active"));
-  //add active class to section in parameter
+  //add active class to section in argument
   section.classList.toggle("active");
+  //show and hide buttons depending on section taken as argument
+  switch (section) {
+    case logInSection:
+      showButtons([signUpBtn]);
+      hideButtons([logInBtn, logOutBtn, loggedUser]);
+      break;
+    case signUpSection:
+      showButtons([logInBtn]);
+      hideButtons([signUpBtn, logOutBtn, loggedUser]);
+      break;
+    case mainSection:
+      showButtons([signUpBtn, logInBtn]);
+      hideButtons([logOutBtn, loggedUser]);
+      break;
+    case userInterface:
+      showButtons([logOutBtn, loggedUser]);
+      hideButtons([signUpBtn, logInBtn]);
+      break;
+  }
 }
-
 //run functions on click event
-logInBtn.addEventListener("click", () => {
-  showSection(logInSection);
-  logInSectionBtns();
-});
-signUpBtn.addEventListener("click", () => {
-  showSection(signUpSection);
-  signUpSectionBtns();
-});
+logInBtn.addEventListener("click", () => showSection(logInSection));
+signUpBtn.addEventListener("click", () => showSection(signUpSection));
 logOutBtn.addEventListener("click", () => {
   showSection(mainSection);
-  mainSectionBtns();
+  logOut();
 });
 
+//check if an user is logged in
+let currentlyLoggedUser = sessionStorage.getItem("currentlyLogged");
+if (currentlyLoggedUser) {
+  showSection(userInterface);
+  loggedUser.innerHTML = "&#x1f464; " + currentlyLoggedUser;
+} else {
+  showSection(mainSection);
+  loggedUser.innerHTML = " ";
+}
 // ---------------------------------------------------------------------------
 // get input from signup form
 const usernameInput = document.getElementById("username");
@@ -66,47 +83,39 @@ function signUp(event) {
     username: usernameInput.value,
     email: emailInput.value,
     password: passwordInput.value,
-    isLoggedIn: false,
   };
+  //get existing users from localStorage
+  const users = JSON.parse(localStorage.getItem("users"));
+  //function checking if username or email is already in use
+  function checkUser() {
+    return users.some(
+      (user) =>
+        user.username === newUser.username || user.email === newUser.email
+    );
+  }
 
-  // stringify object newUser, put it into localStorage with username as key, display message, reset form and proceed to login page
-  function addNewUser() {
-    let stringifiedData = JSON.stringify(newUser);
-    localStorage.setItem(usernameInput.value, stringifiedData);
-    alert("Konto zostało utworzone");
+  //check if object users exists in localStorage
+  if (localStorage.getItem("users")) {
+    //check if username or email is already taken
+    if (checkUser()) {
+      alert("Nazwa bądź adres E-mail jest już zarejestrowany.");
+    } //if not, add newUser to localStorage
+    else {
+      users.push(newUser);
+      localStorage.setItem("users", JSON.stringify(users));
+      alert("Konto zostało utworzone.");
+      signUpForm.reset();
+      showSection(logInSection);
+    }
+  }
+  //if users doesn't exist, create it with newUser
+  else {
+    localStorage.setItem("users", JSON.stringify([newUser]));
+    alert("Konto zostało utworzone.");
     signUpForm.reset();
     showSection(logInSection);
-    logInSectionBtns();
-  }
-  //boolean to indicate match with localStorage
-  let exists = false;
-  //iterate trough elements of localStorage
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    const localStorageValue = JSON.parse(localStorage.getItem(key));
-    //check if email or username input matches with any localStorage element
-    if (
-      localStorageValue.email === newUser.email ||
-      localStorageValue.username === newUser.username
-    ) {
-      exists = true;
-      break;
-    }
-  }
-  // display alert if email or username is already taken
-  if (exists) {
-    alert("Nazwa bądź adres E-mail jest już zarejestrowany.");
-  } else {
-    //if none is taken, try to run addNewUser()
-    try {
-      addNewUser();
-    } catch (error) {
-      console.error(error);
-      alert("Wystąpił nieoczekiwany błąd");
-    }
   }
 }
-
 signUpForm.addEventListener("submit", signUp);
 
 //--------------------------------------------------------------------------------------------------
@@ -117,31 +126,22 @@ const logInForm = document.getElementById("login");
 
 function logIn(event) {
   event.preventDefault();
-
-  //boolean to indicate match with localStorage
-  let loginSuccess = false;
-  //iterate trough elements of localStorage
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    const localStorageValue = JSON.parse(localStorage.getItem(key));
-
-    // check if username/email matches with password
-    if (
-      (localStorageValue.username === username.value &&
-        localStorageValue.password === password.value) ||
-      (localStorageValue.email === username.value &&
-        localStorageValue.password === password.value)
-    ) {
-      loginSuccess = true;
-      break;
-    }
+  //check if username/email is matching with password
+  const users = JSON.parse(localStorage.getItem("users"));
+  function findUser() {
+    return users.some(
+      (user) =>
+        (user.username === username.value || user.email === username.value) &&
+        user.password === password.value
+    );
   }
-  //if a match is found, display message and proceed to user's interface
-  if (loginSuccess) {
+  if (findUser()) {
+    //if a match is found, log user in
+    sessionStorage.setItem("currentlyLogged", username.value);
     alert("Zostałeś zalogowany.");
-    showSection(userInterface);
-    userInterfaceBtns();
     logInForm.reset();
+    showSection(userInterface);
+    loggedUser.innerHTML = "&#x1f464; " + currentlyLoggedUser;
   }
   //if no match is found, display message
   else {
@@ -150,6 +150,11 @@ function logIn(event) {
 }
 
 logInForm.addEventListener("submit", logIn);
+
+function logOut() {
+  sessionStorage.removeItem("currentlyLogged");
+  loggedUser.innerHTML = " ";
+}
 //--------------------------------------------------------------------------------------------------
 
 //request data from API
@@ -160,7 +165,7 @@ fetch("https://api.npoint.io/38edf0c5f3eb9ac768bd", {
   .then((response) => {
     return response.json();
   })
-  //select transactions from recieved response
+  //select transactions from received response
   .then((data) => {
     data.transactions.forEach((record) => {
       // assign an icon to type of transaction
@@ -197,7 +202,6 @@ fetch("https://api.npoint.io/38edf0c5f3eb9ac768bd", {
     });
   });
 //----------------------------------------------------------------------------------------------
-
 const pieChart = fetch("https://api.npoint.io/38edf0c5f3eb9ac768bd")
   .then((response) => response.json())
   .then((data) => {

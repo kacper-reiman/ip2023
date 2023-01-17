@@ -110,6 +110,7 @@ nav {
 }
 nav ul {
   display: flex;
+  align-items: center;
 }
 button {
   display: none;
@@ -151,6 +152,12 @@ button:hover::before {
 button:active::before {
   background-color: hsla(205, 82%, 41%, 0.9);
   transition: 0.1s;
+}
+.currently__logged {
+  display: none;
+  font-weight: 700;
+  color: hsla(212, 100%, 97%, 0.6);
+  text-decoration: underline;
 }
 /* ---------------------------------------------------------------------------- CARDS STYLING  */
 .main__card,
@@ -323,12 +330,10 @@ canvas {
 }
 /* ---------------------------------------------------------------------------- MEDIA QUERY  */
 @media screen and (max-width: 768px) {
-  .main__card,
   .signup__card,
   .login__card,
   .user__interface {
-    min-width: 320px;
-    max-height: 550px;
+    /* min-width: 320px; */
     overflow-y: scroll;
   }
 
@@ -339,7 +344,14 @@ canvas {
   button {
     transform: scale(0.9);
   }
-
+  .main__card {
+    max-width: 320px;
+    max-height: 70%;
+    flex-direction: column-reverse;
+  }
+  .img__wrapper {
+    min-width: 320px;
+  }
   .signup__card > form,
   .login__card > form {
     display: flex;

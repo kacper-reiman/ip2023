@@ -20,7 +20,7 @@
           <li><button id="login__nav" class="active" >Logowanie</button></li>
           <li><button id="signup__nav" class="active">Rejestracja</button></li>
           <li><button id="logout__nav">Wyloguj się</button></li>
-          <li><span id="username__container"></span></li>
+          <li><span class="currently__logged">&#x1f464;</span></li>
         </ul> 
         <!-- button PL/EN -->
 
@@ -39,7 +39,7 @@
       </nav>
     </header>
     <main>
-      <section class="main__card active">
+      <section class="main__card">
         <!-- po lewej blok tekstu, po prawej  img  -->
         <div class="content__wrapper">
          
@@ -50,7 +50,7 @@
             pariatur molestias repellat quasi quibusdam tenetur.
           </p>
         </div>
-        <div class="img__wrapper"></div>
+        <div class="img__wrapper"><img src="images/intive__img.jpg" alt=""></div>
       </section>
       <section class="signup__card">
         <!-- form z nazwą, hasłem, emailem, powtórzeniem emaila i buttonem zarejestruj -->
@@ -59,9 +59,9 @@
           <label for="username">Nazwa użytkownika:</label>
 
           <div class="form__field">
-            <input type="text" name="username" id="username"  minlength="6" maxlength="16" pattern="^[A-Za-z0-9]*$" placeholder="Wpisz nazwę użytkownika" required/><br>
+            <input type="text" name="username" id="username"  minlength="6" maxlength="16" pattern="(?=.*[A-Za-z]{5,})(?=.*\d)[A-Za-z\d]{6,20}" placeholder="Wpisz nazwę użytkownika" required/><br>
             <span class="error__msg">
-              Pole musi zawierać 6-16 znaków - liter i cyfr
+              Pole musi zawierać 6-16 znaków, co najmniej 5 liter i 1 cyfrę
             </span>
         </div>
           
@@ -111,6 +111,7 @@
             type="text"
             name="username"
             id="login__username"
+            pattern="(?=.*[A-Za-z]{5,})(?=.*\d)[A-Za-z\d]{6,20}"
             required
             minlength="6"
             maxlength="20"
