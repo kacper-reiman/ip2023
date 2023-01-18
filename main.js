@@ -228,7 +228,6 @@ const pieChart = fetch("https://api.npoint.io/38edf0c5f3eb9ac768bd")
 const barChart = fetch("https://api.npoint.io/38edf0c5f3eb9ac768bd")
   .then((response) => response.json())
   .then((data) => {
-    const transactionTypes = data.transacationTypes;
     const transactions = data.transactions;
     const dates = transactions.map((transaction) => transaction.date).reverse();
     const dailyBalance = transactions

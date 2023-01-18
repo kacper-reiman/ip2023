@@ -21,6 +21,7 @@ html,
 body {
   height: 100%;
   overflow: hidden;
+  width: 100vw;
 }
 /*
     Typographic tweaks!
@@ -46,12 +47,12 @@ svg {
 /*
     7. Remove built-in form typography styles
   */
-input,
+/* input,
 button,
 textarea,
 select {
   font: inherit;
-}
+} */
 /*
     8. Avoid text overflows
   */
@@ -259,6 +260,9 @@ input {
 input:focus {
   outline: 2px solid var(--clr__lightblue);
 }
+input::placeholder {
+  font-size: 0.8rem;
+}
 #signup__btn,
 #login__btn {
   background-color: var(--clr__lightblue);
@@ -345,7 +349,7 @@ canvas {
 /* ---------------------------------------------------------------------------- MEDIA QUERY  */
 @media screen and (max-width: 768px) {
   body {
-    min-width: 320px;
+    width: max(320px, 100vw);
   }
   nav {
     background: var(--clr__lightblue);

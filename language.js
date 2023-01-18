@@ -28,7 +28,7 @@ function translateToPolish() {
     "Formularz rejestracyjny";
   document.getElementById("username__label").textContent = "Nazwa użytkownika:";
   document.getElementById("username__error").textContent =
-    "Pole musi zawierać 6-16 znaków, co najmniej 5 liter i 1 cyfrę";
+    "Pole musi zawierać co najmniej 5 liter i 1 cyfrę";
   document.getElementById("username").placeholder = "Wpisz nazwę użytkownika";
   document.getElementById("password__label").textContent = "Hasło:";
   document.getElementById("password__error").textContent =
@@ -64,7 +64,7 @@ function translateToEnglish() {
   document.getElementById("signup__form__title").textContent = "Sign up form";
   document.getElementById("username__label").textContent = "Username:";
   document.getElementById("username__error").textContent =
-    "Field must contain 6-16 symbols, at least 5 letters and 1 number";
+    "Field must contain at least 5 letters and 1 number";
   document.getElementById("username").placeholder = "Enter username";
   document.getElementById("password__label").textContent = "Password:";
   document.getElementById("password__error").textContent =
