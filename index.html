@@ -22,9 +22,6 @@
           <li><button id="logout__nav">Wyloguj się</button></li>
           <li><span class="currently__logged">&#x1f464;</span></li>
         </ul> 
-        <!-- button PL/EN -->
-       
-        
         <div class="flag__container">
           <svg
           id="intive__logo"
@@ -46,70 +43,55 @@
     </header>
     <main>
       <section class="main__card">
-        <!-- po lewej blok tekstu, po prawej  img  -->
         <div class="content__wrapper">
-         
-          <img src="images/patronage__logo.jpg" alt="Patronage logo" />
-          <p class="description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-            deserunt totam corrupti accusamus magni omnis laborum dolorum et
-            pariatur molestias repellat quasi quibusdam tenetur.
-          </p>
+            <img src="images/patronage__logo.jpg" alt="Patronage logo" />
+            <p class="description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
+              deserunt totam corrupti accusamus magni omnis laborum dolorum et
+              pariatur molestias repellat quasi quibusdam tenetur.
+            </p>
         </div>
         <div class="img__wrapper"><img src="images/intive__img.jpg" alt=""></div>
       </section>
       <section class="signup__card">
-        <!-- form z nazwą, hasłem, emailem, powtórzeniem emaila i buttonem zarejestruj -->
         <h2 id="signup__form__title">Formularz rejestracyjny</h2>
         <form id="signup" method="post">
           <label id="username__label" for="username">Nazwa użytkownika:</label>
-
           <div class="form__field">
-            <input type="text" name="username" id="username"  minlength="6" maxlength="16" pattern="(?=.*[A-Za-z]{5,})(?=.*\d)[A-Za-z\d]{6,16}" placeholder="Wpisz nazwę użytkownika" required/><br>
-            <span id = "username__error" class="error__msg">
-              Pole musi zawierać co najmniej 5 liter i 1 cyfrę
-            </span>
+              <input type="text" name="username" id="username"  minlength="6" maxlength="16" pattern="(?=.*[A-Za-z]{5,})(?=.*\d)[A-Za-z\d]{6,16}" placeholder="Wpisz nazwę użytkownika" required/><br>
+              <span id = "username__error" class="error__msg">
+                Pole musi zawierać co najmniej 5 liter i 1 cyfrę
+              </span>
         </div>
-          
 
           <label id="password__label" for="password">Hasło:</label>
-
           <div class="form__field">
-            <input type="password" name="password" id="password"  minlength="6" placeholder="Wpisz hasło" required/><br>
-            <span id="password__error" class="error__msg">
-              Pole musi zawierać co najmniej 6 znaków 
-            </span>
+              <input type="password" name="password" id="password"  minlength="6" placeholder="Wpisz hasło" required/><br>
+              <span id="password__error" class="error__msg">
+                Pole musi zawierać co najmniej 6 znaków 
+              </span>
         </div>
           
-
           <label for="email">E-mail:</label>
-
           <div class="form__field">
-          
-            <input id="email" name="email" type="email" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'example@com.pl' : ''); if(this.checkValidity()) form.email__confirm.pattern = this.value;" placeholder="Wpisz E-mail" required>
-            <span id="email__error" class="error__msg">
-            Pole musi mieć poprawny format E-mail
-            </span>
+              <input id="email" name="email" type="email" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'example@com.pl' : ''); if(this.checkValidity()) form.email__confirm.pattern = this.value;" placeholder="Wpisz E-mail" required>
+              <span id="email__error" class="error__msg">
+              Pole musi mieć poprawny format E-mail
+              </span>
           </div>
           
-
           <label id="confirm__label" for="email__confirm">Potwierdź E-mail:</label>
-
           <div class="form__field">
-            <!-- <input type="email"  name="email__confirm" id="email__confirm" required/><br> -->
-            <input id="email__confirm" name="email__confirm" type="email" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Wartości nie zgadzają się' : '');" placeholder="Potwierdź E-mail" required>
-            <span id = "confirm__error" class="error__msg">
-            Pole musi mieć taką samą wartość jak "E-mail" 
-            </span>
+              <input id="email__confirm" name="email__confirm" type="email" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Wartości nie zgadzają się' : '');" placeholder="Potwierdź E-mail" required>
+              <span id = "confirm__error" class="error__msg">
+              Pole musi mieć taką samą wartość jak "E-mail" 
+              </span>
         </div>
 
-        
-
-          <input type="submit" id="signup__btn" value="Zarejestruj się" />
+        <input type="submit" id="signup__btn" value="Zarejestruj się" />
         </form>
       </section>
       <section class="login__card">
-        <!-- form z loginem, hasłem i buttonem zaloguj -->
         <h2 id="login__form__title">Logowanie</h2>
         <form id="login" method="post" >
           <label id="login__username__label" for="username">Nazwa lub E-mail:</label>
@@ -144,6 +126,5 @@
     <script src="language.js"></script>
     <script src="main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
   </body>
 </html>

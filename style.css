@@ -31,7 +31,6 @@ body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  font-size: 14px;
 }
 /*
     6. Improve media defaults
@@ -62,7 +61,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+li {
   overflow-wrap: break-word;
 }
 /*
@@ -85,6 +85,7 @@ ul {
 :root {
   --clr__white: hsl(212, 100%, 97%);
   --clr__lightblue: hsl(205, 82%, 41%);
+  font-size: 14px;
 }
 /* ---------------------------------------------------------------------------- PAGE LAYOUT  */
 main {
@@ -326,16 +327,14 @@ canvas {
   display: flex;
   border-radius: 1rem;
   justify-content: space-between;
+  padding: 1rem;
 }
 .transactions__list {
-  display: flex;
-  padding: 1rem;
   background-color: hsla(205, 82%, 41%, 0.9);
   color: hsl(0, 0%, 100%);
   font-weight: 600;
 }
 .transaction__details {
-  padding: 1rem;
   margin: 0.8rem 0.5rem;
   background-color: var(--clr__white);
   color: var(--clr__lightblue);
@@ -343,8 +342,12 @@ canvas {
 }
 .transaction__details > li,
 .transactions__list > li {
-  width: 100%;
-  text-align: left;
+  width: 20%;
+  font-size: clamp(12px, 2vw, 1rem);
+}
+.icon {
+  max-width: 24px;
+  max-height: 24px;
 }
 /* ---------------------------------------------------------------------------- MEDIA QUERY  */
 @media screen and (max-width: 768px) {
